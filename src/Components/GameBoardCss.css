@@ -1,0 +1,18 @@
+.game-board {
+    position: relative;
+    width: 100%; /* Adjust the width as necessary */
+    height: 200px; /* Adjust the height as necessary */
+    background-color: #f0f0f0; /* Just to make the game board visible */
+}
+
+.ship {
+    /* Initial styling for the ship */
+    position: absolute;
+    bottom: 10px; /* Position the ship towards the bottom of the game board */
+}
+
+.missile {
+    width: 2px; /* Adjust width as needed */
+    height: 20px; /* Adjust height as needed */
+    background-color: red; /* Or any color you prefer */
+}

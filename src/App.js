@@ -1,22 +1,21 @@
+import React, { useState, useEffect } from 'react';
+
 import logo from './logo.svg';
 import './App.css';
+import TypingEffect from './Components/Introduction';
+import GameScreen from './Components/GameScreen';
 
 function App() {
+  const [displayGameScreen, setDisplayGameScreen] = useState(false);
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        {/* <TypingEffect 
+          messages={[`  HE110 W0R7d...`, `  G o o d b y e  W o r l d . . .`, `GOOD`, `BYE`]} 
+          setDisplayGameScreen={setDisplayGameScreen}/>  */}
+        {/* {displayGameScreen && <GameScreen />} */}
+        <GameScreen />
       </header>
     </div>
   );
