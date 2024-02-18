@@ -1,38 +1,31 @@
 import React, { useState, useEffect } from 'react';
 
-const TypingEffect = ({ messages, setDisplayGameScreen, typingSpeed = 100 }) => {
+const TypingEffect = ({ messages, setDisplayGameScreen, typingSpeed = 300 }) => {
     const [displayedText, setDisplayedText] = useState('');
     const [messageIndex, setMessageIndex] = useState(0);
     const [currentMessage, setCurrentMessage] = useState(messages[messageIndex]);
 
     useEffect(() => {
-        let index = 0;
+        let index = -1;
         const timer = setInterval(() => {
             if (index <= currentMessage?.length && currentMessage != null) {
-                setDisplayedText((prev) => prev + currentMessage.charAt(index));
-                index++;
-                if (index === currentMessage.length && currentMessage != null) {
+                if (index === currentMessage.length) {
                     if (messageIndex !== messages.length){
                         setDisplayedText('');
                         setMessageIndex(messageIndex + 1);
                         setCurrentMessage(messages[messageIndex]);
-                    } else {
-                        
                     }
-                    // if(messageIndex !== messages.length - 1 && messages = null){
-                    //     setDisplayedText('');
-                    //     return setDisplayGameScreen(true);
-                    // }
                 }
+                setDisplayedText((prev) => prev + currentMessage.charAt(index));
+                index++;
             } else {
                 setDisplayedText('');
                 setCurrentMessage(null);
                 setDisplayGameScreen(true);
             }
         }, typingSpeed);
-        setDisplayedText('');
         return () => clearInterval(timer);
-    }, [messages, typingSpeed, messageIndex]);
+    }, [messages, typingSpeed, messageIndex, currentMessage, setDisplayGameScreen]);
 
     return <div>{displayedText}</div>;
 };
