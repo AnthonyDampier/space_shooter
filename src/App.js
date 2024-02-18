@@ -14,7 +14,7 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
+      <header className="noise">
         <TypingEffect 
           messages={[`HE110 W0R7d...`, `G00D8YE  W0R7d...`, `G00D`, `8YE`]} 
           setDisplayGameScreen={handleSetDisplayGameScreen}/> 

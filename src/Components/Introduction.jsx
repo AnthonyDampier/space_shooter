@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
-const TypingEffect = ({ messages, setDisplayGameScreen, typingSpeed = 300 }) => {
+const TypingEffect = ({ messages, setDisplayGameScreen, typingSpeedProp}) => {
+    const [typingSpeed, setTypingSpeed] = useState(typingSpeedProp || 200);
     const [displayedText, setDisplayedText] = useState('');
     const [messageIndex, setMessageIndex] = useState(0);
     const [currentMessage, setCurrentMessage] = useState(messages[messageIndex]);
@@ -23,11 +24,12 @@ const TypingEffect = ({ messages, setDisplayGameScreen, typingSpeed = 300 }) => 
                 setCurrentMessage(null);
                 setDisplayGameScreen(true);
             }
+            //setTypingSpeed(typingSpeedProp * 1.01* 1.01);
         }, typingSpeed);
         return () => clearInterval(timer);
-    }, [messages, typingSpeed, messageIndex, currentMessage, setDisplayGameScreen]);
+    }, [messages, messageIndex, currentMessage, setDisplayGameScreen]);
 
-    return <div>{displayedText}</div>;
+    return <div className='type-effect'>{displayedText}</div>;
 };
 
 export default TypingEffect;
